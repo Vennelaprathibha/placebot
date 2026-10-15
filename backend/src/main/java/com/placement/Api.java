@@ -20,7 +20,7 @@ public class Api {
   private final R.Documents documents;
 
   @Value("${llm.api-key:}") private String key;
-  @Value("${llm.model:gemini-2.5-flash}") private String model;
+  @Value("${llm.model:gemini-3.5-flash}") private String model;
 
   public Api(R.Users users, R.Msgs msgs, R.Jobs jobs, R.Documents documents) {
     this.users = users;

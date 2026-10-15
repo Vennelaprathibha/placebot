@@ -34,8 +34,8 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       SELENIUM_URL: http://selenium:4444/wd/hub
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
-      LLM_MODEL: ${LLM_MODEL:-gemini-2.5-flash}
-    ports: ["8080:8080"]
+      LLM_MODEL: ${LLM_MODEL:-gemini-3.5-flash}
+    ports: ["8081:8080"]
     depends_on:
       db: { condition: service_healthy }
       selenium: { condition: service_started }

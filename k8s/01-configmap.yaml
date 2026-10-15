@@ -7,4 +7,4 @@ data:
   DB_HOST: mysql
   DB_USER: root
   SELENIUM_URL: http://selenium:4444/wd/hub
-  LLM_MODEL: gemini-2.5-flash
+  LLM_MODEL: gemini-3.5-flash

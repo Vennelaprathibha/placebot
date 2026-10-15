@@ -1,0 +1,6 @@
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY index.html /usr/share/nginx/html/index.html
+COPY placement-hero.png /usr/share/nginx/html/placement-hero.png
+EXPOSE 80
+HEALTHCHECK --interval=15s --timeout=3s CMD wget -qO- http://localhost/ >/dev/null || exit 1

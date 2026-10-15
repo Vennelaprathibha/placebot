@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium
+  namespace: placebot
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: selenium }
+  template:
+    metadata:
+      labels: { app: selenium }
+    spec:
+      containers:
+        - name: selenium
+          image: selenium/standalone-chrome:latest
+          ports: [{ containerPort: 4444 }]
+          readinessProbe:
+            httpGet: { path: /status, port: 4444 }
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          volumeMounts:
+            - { name: dshm, mountPath: /dev/shm }
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits: { memory: 2Gi }
+      volumes:
+        - name: dshm
+          emptyDir: { medium: Memory, sizeLimit: 2Gi }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: selenium
+  namespace: placebot
+spec:
+  selector: { app: selenium }
+  ports: [{ port: 4444, targetPort: 4444 }]

@@ -1,0 +1,9 @@
+.env
+target/
+*.class
+*.log
+.idea/
+.vscode/
+*.iml
+.DS_Store
+k8s/secret.yaml
